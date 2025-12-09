@@ -8,13 +8,15 @@ try {
     admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
     });
+    console.log("Firebase Admin initialized with service account");
   } else {
     // When running inside GCP/Firebase (or locally with GOOGLE_APPLICATION_CREDENTIALS)
     admin.initializeApp();
+    console.log("Firebase Admin initialized with default credentials");
   }
 } catch (e) {
   // ignore "already initialized" or parse errors (we'll log below if needed)
-  // console.warn('firebase admin init warning', e);
+  console.warn('firebase admin init warning', e);
 }
 
 const db = admin.firestore();
