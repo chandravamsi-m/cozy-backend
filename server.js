@@ -1,4 +1,5 @@
 // server.js
+require("dotenv").config();
 const app = require("./functions/src/app");
 
 const port = process.env.PORT || 10000;

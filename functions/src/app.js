@@ -8,19 +8,11 @@ const enquiriesRoutes = require("./routes/enquiries");
 const miscRoutes = require("./routes/misc");
 
 // allowed origins from env (comma separated) or fallback to localhost dev
-const allowed = (process.env.ALLOWED_ORIGINS || "http://localhost:5174").split(",");
+// const allowed = (process.env.ALLOWED_ORIGINS || "http://localhost:5174").split(",");
 
 const app = express();
 
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin) return callback(null, true); // allow Postman, server-to-server
-      if (allowed.includes(origin)) return callback(null, true);
-      return callback(new Error("Not allowed by CORS"));
-    },
-  })
-);
+app.use(cors({ origin: true }));
 
 app.use(express.json());
 
