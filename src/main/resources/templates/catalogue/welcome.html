@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Cozy Creations - Welcome</title>
+  <style>
+    @font-face {
+      font-family: 'Papyrus';
+      src: url('https://res.cloudinary.com/dumkblp3v/raw/upload/v1770554569/papyrus_cwxj89.ttf') format('truetype');
+      font-display: block;
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Non Ophelie Display Trial';
+      src: url('https://res.cloudinary.com/dumkblp3v/raw/upload/v1770554592/NonOphelieDisplay-Regular-BF67107f6e3063a_aqqjn2.ttf') format('truetype');
+      font-display: block;
+      font-weight: normal;
+      font-style: normal;
+    }
+    .font-load-trigger {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+      visibility: hidden;
+    }
+    :root {
+      --bg-color: #FFC592;
+      --text-dark: #4F3629;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: #e5e5e5; display: flex; justify-content: center;
+      font-family: 'Papyrus', fantasy, sans-serif;
+    }
+    .a4-page {
+      width: 210mm; height: 297mm; background-color: var(--bg-color);
+      position: relative; overflow: hidden; display: flex; flex-direction: column;
+    }
+    .hero-section {
+      width: 100%; height: 65%; position: relative;
+      background-color: #dcc8b1;
+      background-image: url('https://res.cloudinary.com/dumkblp3v/image/upload/v1770548599/heroimage_ueotan.jpg');
+      background-size: cover;
+    }
+    .logo { position: absolute; width: 300px; height: auto; z-index: 5; }
+    .info-section {
+      width: 100%; height: 35%; background-color: var(--bg-color);
+      position: relative; padding: 32px 40px 40px 32px; display: flex; align-items: flex-start;
+    }
+    .welcome-text {
+      font-size: 24px; color: var(--text-dark); line-height: 1.6;
+      letter-spacing: 2px; max-width: 550px; z-index: 2; text-align: left;
+    }
+    .large-lamp { position: absolute; bottom: -40px; right: 0px; width: 180px; height: 640px; z-index: 3; }
+  </style>
+</head>
+<body>
+  <div class="font-load-trigger" style="font-family: 'Papyrus';">a</div>
+  <div class="font-load-trigger" style="font-family: 'Non Ophelie Display Trial';">a</div>
+  <div class="a4-page">
+    <div class="hero-section">
+      <img src="https://res.cloudinary.com/dumkblp3v/image/upload/v1770548514/logo_wq2xws.svg" alt="Cozy Creations Logo" class="logo">
+    </div>
+    <div class="info-section">
+      <div class="welcome-text">
+        Welcome to Cozy Creations—hand-poured soy and gel candles made with premium, chemical-free fragrances.
+        Beautiful, fragrant, and budget-friendly—crafted to brighten every space.
+      </div>
+      <img src="https://res.cloudinary.com/dumkblp3v/image/upload/v1770548513/lamp_svjx60.svg" alt="Decorative Lamp" class="large-lamp">
+    </div>
+  </div>
+</body>
+</html>

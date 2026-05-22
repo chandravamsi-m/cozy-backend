@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="'Cozy Catalogue - ' + ${collectionTitle}">Cozy Catalogue</title>
+  <style>
+    @font-face {
+      font-family: 'Papyrus';
+      src: url('https://res.cloudinary.com/dumkblp3v/raw/upload/v1770554569/papyrus_cwxj89.ttf') format('truetype');
+      font-display: block; font-weight: normal; font-style: normal;
+    }
+    @font-face {
+      font-family: 'Non Ophelie Display Trial';
+      src: url('https://res.cloudinary.com/dumkblp3v/raw/upload/v1770554592/NonOphelieDisplay-Regular-BF67107f6e3063a_aqqjn2.ttf') format('truetype');
+      font-display: block; font-weight: normal; font-style: normal;
+    }
+    .font-load-trigger { position: absolute; top: -9999px; left: -9999px; visibility: hidden; }
+    :root { --bg-color: #FFC592; --card-bg: #4F3629; --badge-bg: #FFC727; --text-white: #ffffff; --text-dark: #000000; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background-color: #e5e5e5; display: flex; justify-content: center; padding: 0; font-family: 'Non Ophelie Display Trial', serif; }
+    .a4-page {
+      width: 210mm; height: 297mm; background-color: var(--bg-color); position: relative; overflow: hidden;
+      padding: 16px 40px 30px 40px; display: flex; flex-direction: column;
+    }
+    .decorative-lines { position: absolute; top: 0; right: 0; width: 500px; z-index: 1; pointer-events: none; }
+    header { position: relative; z-index: 2; margin-bottom: 20px; }
+    h1 { font-size: 48px; color: #4d372c; line-height: 1.1; font-weight: 400; margin-bottom: 8px; }
+    .product-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; position: relative;
+      z-index: 2; max-width: 900px; margin-top: 18px;
+    }
+    .product-grid .card:nth-child(1) { grid-column: 1 / 2; }
+    .product-grid .card:nth-child(2) { grid-column: 2 / 3; }
+    .product-grid .card:nth-child(3) { grid-column: 1 / 2; margin-top: 144px; }
+    .product-grid .card:nth-child(4) { grid-column: 2 / 3; margin-top: 144px; }
+    .product-grid .card:nth-child(5) { grid-column: 3 / 4; margin-top: 144px; }
+    .card {
+      background-color: var(--card-bg); border-radius: 40px; padding: 52px 8px 8px 8px;
+      display: flex; flex-direction: column; align-items: center; text-align: center; color: var(--text-white);
+      width: 100%; position: relative; margin-top: 100px;
+    }
+    .product-image-container {
+      width: 85%; aspect-ratio: 1 / 1; background-color: #c8c0b4; border-radius: 20px; overflow: hidden;
+      display: flex; align-items: center; justify-content: center; position: absolute; top: -140px; left: 50%;
+      transform: translateX(-50%); box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .product-image-container img { width: 100%; height: 100%; object-fit: cover; }
+    .card h2 { font-size: 31px; line-height: 1.1; font-weight: 100; letter-spacing: 0.8px; text-align: center; padding: 8px 4px 4px 4px; max-height: 3.6em; overflow: hidden; }
+    .badge { background-color: var(--badge-bg); color: var(--text-dark); padding: 8px; border-radius: 10px; font-weight: 100; font-size: 24px; line-height: 1; margin-bottom: 4px; }
+    .description { font-size: 14px; line-height: 1.4; opacity: 0.7 !important; padding: 4px 4px; font-family: 'Papyrus', fantasy, sans-serif; }
+    .candlestick { position: absolute; right: 30px; top: 380px; width: 180px; z-index: 1; }
+    footer { margin-top: auto; text-align: center; padding-top: 20px; padding-bottom: 15px; }
+    .footer-text { font-family: 'Papyrus', fantasy, sans-serif; font-size: 22px; color: #4d372c; font-style: normal; }
+  </style>
+</head>
+<body>
+  <div class="font-load-trigger" style="font-family: 'Papyrus';">a</div>
+  <div class="font-load-trigger" style="font-family: 'Non Ophelie Display Trial';">a</div>
+  <div class="a4-page">
+    <img src="https://res.cloudinary.com/dumkblp3v/image/upload/v1770548513/linesright_hk7t3j.svg" alt="" class="decorative-lines">
+    <header>
+      <h1 th:utext="'Our ' + ${collectionTitle} + '<br>Collection...'">Our Collection...</h1>
+    </header>
+    <main class="product-grid">
+      <div class="card" th:each="p : ${products}">
+        <div class="product-image-container">
+          <img th:src="${p.optimizedImageUrl}" th:alt="${p.name}">
+        </div>
+        <h2 th:style="'font-size: ' + ${p.fontSize} + 'px;'" th:text="${p.name}">Product Name</h2>
+        <div class="badge" th:text="${p.badgeText}">Badge Text</div>
+        <div class="description" th:utext="${p.descriptionHtml}">Description HTML</div>
+      </div>
+    </main>
+    <img src="https://res.cloudinary.com/dumkblp3v/image/upload/v1770548487/candlestick_ljryjs.svg" alt="" class="candlestick">
+    <footer>
+      <div class="footer-text">Customization Available on All products</div>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+server:
+  port: 4000
+
+cozy:
+  email:
+    admin: ${ADMIN_EMAIL}
+    from: ${EMAIL_FROM}
+  
+  razorpay:
+    key-id: ${RAZORPAY_KEY_ID}
+    key-secret: ${RAZORPAY_KEY_SECRET}
+
+  resend:
+    api-key: ${RESEND_API_KEY}
+
+  cloudinary:
+    cloud-name: ${CLOUDINARY_CLOUD_NAME}
+    api-key: ${CLOUDINARY_API_KEY}
+    api-secret: ${CLOUDINARY_API_SECRET}
+
+  shiprocket:
+    email: ${SHIPROCKET_EMAIL}
+    password: ${SHIPROCKET_PASSWORD}
+    pickup-location: ${SHIPROCKET_PICKUP_LOCATION}
+    pickup-pincode: ${SHIPROCKET_PICKUP_PINCODE}
+    enable-shipping-fee: ${ENABLE_SHIPPING_FEE}
+    webhook-secret: ${SHIPROCKET_WEBHOOK_SECRET}
+
+  twilio:
+    account-sid: ${TWILIO_ACCOUNT_SID}
+    auth-token: ${TWILIO_AUTH_TOKEN}
+    whatsapp-number: ${TWILIO_WHATSAPP_NUMBER}
+    admin-number: ${ADMIN_WHATSAPP_NUMBER}
+    enable-notifications: ${ENABLE_WHATSAPP_NOTIFICATIONS}
+
+  firebase:
+    admin-cred-json: ${FIREBASE_ADMIN_CRED_JSON}
