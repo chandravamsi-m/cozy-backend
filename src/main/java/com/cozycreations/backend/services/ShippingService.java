@@ -3,6 +3,7 @@ package com.cozycreations.backend.services;
 import com.cozycreations.backend.models.Order;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
@@ -34,12 +35,12 @@ public class ShippingService {
         
         try {
             Map<String, String> creds = Map.of("email", email, "password", password);
-            Map response = restClient.post()
+            Map<String, Object> response = restClient.post()
                     .uri("/auth/login")
                     .header("Content-Type", "application/json")
                     .body(creds)
                     .retrieve()
-                    .body(Map.class);
+                    .body(new ParameterizedTypeReference<Map<String, Object>>() {});
             
             if (response != null && response.containsKey("token")) {
                 this.token = (String) response.get("token");
@@ -65,7 +66,7 @@ public class ShippingService {
                     .uri(uri)
                     .header("Authorization", "Bearer " + currentToken)
                     .retrieve()
-                    .body(Map.class);
+                    .body(new ParameterizedTypeReference<Map<String, Object>>() {});
         } catch (Exception e) {
             log.error("Shiprocket serviceability check failed", e);
             return new HashMap<>();
@@ -88,7 +89,7 @@ public class ShippingService {
                     .header("Content-Type", "application/json")
                     .body(payload)
                     .retrieve()
-                    .body(Map.class);
+                    .body(new ParameterizedTypeReference<Map<String, Object>>() {});
         } catch (Exception e) {
             log.error("Failed to create Shiprocket order", e);
             throw e;

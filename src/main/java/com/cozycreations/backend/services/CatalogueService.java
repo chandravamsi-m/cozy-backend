@@ -13,8 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 @Slf4j

@@ -1,19 +1,13 @@
 package com.cozycreations.backend.controllers;
 
-import com.cozycreations.backend.services.PaymentService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.json.JSONObject;
 
 import java.util.Map;
 
 @RestController
 @RequestMapping("/api/webhook")
 public class WebhookController {
-
-    @Autowired
-    private PaymentService paymentService;
 
     @PostMapping("/razorpay")
     public ResponseEntity<?> handleRazorpayWebhook(@RequestHeader("X-Razorpay-Signature") String signature, 
